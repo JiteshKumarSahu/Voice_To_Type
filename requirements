@@ -1,4 +1,4 @@
 Streamlit 
-Transformers
+from Transformers import pipeline
 Librosa
 Torch
