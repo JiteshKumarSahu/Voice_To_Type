@@ -1,27 +1,17 @@
 import streamlit as st
 from transformers import pipeline
-import torch
 import librosa
 import io
+import base
 
 # 1. Configure the Streamlit Page
 st.set_page_config(page_title="Local Voice Recognition", page_icon="🎙️")
 st.title("🎙️ Jitesh Voice Recognition App")
 st.write("Record your voice below!")
 
-# 2. Load the ML Model (Cached so it only loads once)
-@st.cache_resource
-def load_speech_model():
-    # Using the tiny model for fast, local CPU/GPU execution
-    pipe = pipeline(
-        "automatic-speech-recognition", 
-        model="openai/whisper-tiny", 
-        device="cuda" if torch.cuda.is_available() else "cpu"
-    )
-    return pipe
 
 with st.spinner("Loading Machine Learning Model..."):
-    asr_pipeline = load_speech_model()
+    asr_pipeline = base.load_speech_model()
 
 # 3. Audio Input Widget
 audio_file = st.audio_input("Click the microphone to record")
