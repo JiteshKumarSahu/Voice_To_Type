@@ -1,6 +1,6 @@
 Python
 Streamlit 
-Tourch
+Torch == 2.4.0+cpu
 Transformers
 Librosa
 
